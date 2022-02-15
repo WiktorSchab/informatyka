@@ -1,2 +1,3 @@
 # informatyka
 infa
+plik zedytowany
