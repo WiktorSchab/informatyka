@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 using namespace std;
 void funckja_szyfr(char table[], int klucz) {
     int word_lenght;
@@ -9,6 +9,16 @@ void funckja_szyfr(char table[], int klucz) {
     else if (klucz >= 0) {
         for (int i = 0; i < word_lenght; i++) {
             if (table[i] + klucz <= 'x') {
+                table[i] += klucz;
+            }
+            else {
+                table[i] = table[i] + klucz - 26;
+            }
+        }
+    }
+    else {
+        for (int i = 0; i < word_lenght; i++) {
+            if (table[i] + klucz <= 'a') {
                 table[i] += klucz;
             }
             else {
