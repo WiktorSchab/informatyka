@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 using namespace std;
 void funckja_szyfr(char table[], int klucz) {
     int word_lenght;
@@ -6,9 +7,9 @@ void funckja_szyfr(char table[], int klucz) {
     if (!(klucz >= -26 && klucz <= 26)) {
         return;
     }
-    else if (klucz >= 0) {
+    if (klucz >= 0) {
         for (int i = 0; i < word_lenght; i++) {
-            if (table[i] + klucz <= 'x') {
+            if (table[i] + klucz <= 'z') {
                 table[i] += klucz;
             }
             else {
@@ -18,11 +19,11 @@ void funckja_szyfr(char table[], int klucz) {
     }
     else {
         for (int i = 0; i < word_lenght; i++) {
-            if (table[i] + klucz <= 'a') {
+            if (table[i] + klucz >= 'a') {
                 table[i] += klucz;
             }
             else {
-                table[i] = table[i] + klucz - 26;
+                table[i] = table[i] + klucz + 26;
             }
         }
     }
@@ -38,9 +39,9 @@ int main() {
     cout << "Podaj slowo: ";
     cin >> table;
 
-    slowo = table;
 
     funckja_szyfr(table, klucz);
     cout << "Po zaszyfrowaniu: " << table << endl;
-    cout << "Po rozszyfrowaniu: " << slowo << endl;
+    funckja_szyfr(table, -klucz);
+    cout << "Po rozszyfrowaniu: " << table << endl;
 }
